@@ -10,16 +10,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_28_015249) do
+ActiveRecord::Schema.define(version: 2020_08_28_231050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "type"
+    t.integer "user_id"
+    t.integer "job_id"
+    t.integer "event_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.string "info"
+    t.datetime "date"
+    t.datetime "time"
+    t.string "contact_person"
+    t.string "email"
+    t.string "link"
+    t.boolean "saved"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "title"
+    t.string "info"
+    t.integer "salary__starting_range"
+    t.integer "salary_highest_range"
+    t.string "contact_person"
+    t.string "email"
+    t.string "phone"
+    t.boolean "saved"
+    t.datetime "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "goals"
+    t.string "resume_link"
     t.string "avatar"
+    t.string "website"
+    t.string "contact"
+    t.string "linked_in"
+    t.string "twitter"
+    t.boolean "open_to_connect"
+    t.boolean "open_to_mentor"
+    t.boolean "available_to_work"
+    t.boolean "saved"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
