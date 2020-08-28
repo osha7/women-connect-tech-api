@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: djsz02nwd
+  api_key: '627461643512957'
+  api_secret: Jilc_aPMEhBPRZ4FYNFUM-BKMo0
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: djsz02nwd
+  api_key: '627461643512957'
+  api_secret: Jilc_aPMEhBPRZ4FYNFUM-BKMo0
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: djsz02nwd
+  api_key: '627461643512957'
+  api_secret: Jilc_aPMEhBPRZ4FYNFUM-BKMo0
+  enhance_image_tag: true
+  static_file_support: false
