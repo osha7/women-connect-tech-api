@@ -1,8 +1,13 @@
 class AvatarsController < ApplicationController
 
     def create
-        avatar = Avatar.create(id: params[:id])
         
+        # byebug
+        image = Cloudinary::Uploader.upload(params[:image])
+        video = Cloudinary::Uploader.upload(params[:video], :resource_type => :video)
+
+        avatar = Avatar.create(image: image["link"], video: video["link"])
+        render json: avatar
     end
 
 end
