@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    
+    has_one :avatar
     has_one :category
 
     has_secure_password
