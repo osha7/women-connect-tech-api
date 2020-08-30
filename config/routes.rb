@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   root to: "static#home"
 
   resources :avatars, only: [:create]
+  resources :jobs, only: [:create, :index, :show, :destroy]
+  resources :events, only: [:create, :index, :show, :destroy]
+
 end
