@@ -12,7 +12,13 @@ class JobsController < ApplicationController
     end
 
     def create
-        @job = Job.create(job_params)
+        # byebug
+        job = Job.create(job_params)
+        if job.valid?
+            render json: job
+        else
+            render json: {error: 'Unable to save job'}
+        end
     end
 
     def destroy
@@ -23,7 +29,7 @@ class JobsController < ApplicationController
     private
 
     def job_params
-        params.permit(:id, :title, :info, :salary_starting_range, :salary_highest_range, :contact_person, :email, :phone, :saved, :date)
+        params.require(:job).permit(:id, :title, :info, :salary_starting_range, :salary_highest_range, :contact_person, :email, :phone, :saved, :date)
     end
 
 end
