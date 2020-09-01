@@ -24,6 +24,7 @@ class JobsController < ApplicationController
     def destroy
         job = Job.find_by(id: params[:id])
         job.destroy
+        render json: job
     end
 
     private
