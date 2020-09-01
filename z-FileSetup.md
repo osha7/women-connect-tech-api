@@ -30,6 +30,8 @@ npm install redux
 npm install react-redux
 npm install react-router-dom
 npm install redux-thunk
+npm install --save redux-form
+npm i react-dates
 <!-- npm install thunk -->
 
 --------------CORS---------------
