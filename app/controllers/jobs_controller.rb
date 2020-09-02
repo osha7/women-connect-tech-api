@@ -21,6 +21,21 @@ class JobsController < ApplicationController
         end
     end
 
+    def edit
+        job = Job.find_by(id: params[:id])
+    end
+
+    def update
+        job = Job.find_by(id: params[:id])
+        job.update(job_params)
+        if job.valid?
+            job.save
+            render json: job
+        else
+            render json: {error: 'Unable to save edits'}
+        end
+    end
+
     def destroy
         job = Job.find_by(id: params[:id])
         job.destroy
