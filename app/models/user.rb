@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_one :avatar
+    accepts_nested_attributes_for :avatar
     has_one :category
 
     has_secure_password

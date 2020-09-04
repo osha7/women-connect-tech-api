@@ -14,13 +14,13 @@ class UsersController < ApplicationController
 
     def create
         # byebug
-        @user = User.create!(
-            username: params['user']['username'],
-            email: params['user']['email'],
-            password: params['user']['password'],
-            password_confirmation: params['user']['password_confirmation'],
-            avatar: params['user']['avatar'],
-            )
+        @user = User.create(user_params)
+        # @user = User.create!(
+        #     username: params['user']['username'],
+        #     email: params['user']['email'],
+        #     password: params['user']['password'],
+        #     password_confirmation: params['user']['password_confirmation'],
+        #     )
         if @user 
             avatar = Avatar.create(user_id: @user.id)
             session[:user_id] = @user.id
@@ -37,10 +37,12 @@ class UsersController < ApplicationController
     end
 
     def update
+    
         @user.update(user_params)
+
         if @user.valid?
             @user.save
-            render json: @user
+            render json: UserSerializer.new(@user).to_serialized_json
         else
             render json: {error: 'Unable to save edits'}
         end
@@ -50,7 +52,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :password_digest, :first_name, :last_name, :goals, :resume_link, :avatar, :website, :contact, :linked_in, :twitter, :open_to_connect, :open_to_mentor, :available_to_work, :saved)
+        params.require(:user).permit(:id, :username, :email, :password_digest, :password, :password_confirmation, :first_name, :last_name, :goals, :resume_link, :website, :contact, :linked_in, :twitter, :open_to_connect, :open_to_mentor, :available_to_work, :saved, avatar_attributes: [:link, :image, :video, :user_id])
     end
 
     def set_user
