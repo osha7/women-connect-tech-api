@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_034826) do
+ActiveRecord::Schema.define(version: 2020_09_04_174430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "avatars", force: :cascade do |t|
-    t.string "link"
+    t.string "link", default: "https://res.cloudinary.com/djsz02nwd/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1599245196/image-not-avail-01_xaftr8.jpg"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_09_04_034826) do
     t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
-    t.string "goals"
+    t.string "goals", default: "undefined"
     t.string "resume_link"
     t.string "website"
     t.string "contact"

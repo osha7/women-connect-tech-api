@@ -3,29 +3,26 @@ class UsersController < ApplicationController
 
     def index
         users = User.all
-        render json: {
-            users: users
-        }
+        render json: UserSerializer.new(users).to_serialized_json
     end
 
     def show
         # user = User.find_by(id: params[:id])
-        render json: {
-            user: @user
-        }
+        avatar = @user.avatar
+        render json: UserSerializer.new(@user).to_serialized_json
     end
 
     def create
-        byebug
+        # byebug
         @user = User.create!(
             username: params['user']['username'],
             email: params['user']['email'],
             password: params['user']['password'],
             password_confirmation: params['user']['password_confirmation'],
             avatar: params['user']['avatar'],
-            website: params['user']['website']
             )
         if @user 
+            avatar = Avatar.create(user_id: @user.id)
             session[:user_id] = @user.id
             render json: {
                 status: :created,

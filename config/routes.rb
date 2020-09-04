@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get :logged_in, to: "sessions#logged_in"
   root to: "static#home"
 
-  resources :avatars, only: [:create]
+  resources :avatars, only: [:create, :show, :index]
   resources :jobs
   resources :events, only: [:create, :index, :show, :destroy]
 

@@ -9,6 +9,9 @@ class JobsController < ApplicationController
 
     def show
         @job = Job.find_by(id: params[:id])
+        render json: {
+            job: @job
+        }
     end
 
     def create
