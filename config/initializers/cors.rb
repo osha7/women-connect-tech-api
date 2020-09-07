@@ -66,6 +66,24 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     end
 
     allow do
+        origins 'http://localhost:3000/events'
+
+        resource '*',
+            headers: :any,
+            methods: [:get, :post, :put, :patch, :delete, :options, :head],
+            credentials: true
+    end
+
+    allow do
+        origins 'http://localhost:3000/events/:id'
+
+        resource '*',
+            headers: :any,
+            methods: [:get, :post, :put, :patch, :delete, :options, :head],
+            credentials: true
+    end
+
+    allow do
         origins 'http://localhost:3002'
 
         resource '*',

@@ -7,6 +7,6 @@ Rails.application.routes.draw do
 
   resources :avatars, only: [:create, :show, :index]
   resources :jobs
-  resources :events, only: [:create, :index, :show, :destroy]
+  resources :events
 
 end
