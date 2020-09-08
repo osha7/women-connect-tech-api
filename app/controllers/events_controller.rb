@@ -16,6 +16,7 @@ class EventsController < ApplicationController
 
     def create
         @event = Event.create(event_params)
+        # @event.user_id: 
         if @event.valid?
             render json: @event
         else
@@ -48,7 +49,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-        params.require(:event).permit(:id, :title, :info, :date, :time, :contact_person, :email, :link)
+        params.require(:event).permit(:id, :title, :info, :date, :time, :contact_person, :email, :link, :user_id)
     end
 
 end

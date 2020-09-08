@@ -2,6 +2,8 @@ class User < ApplicationRecord
     has_one :avatar
     accepts_nested_attributes_for :avatar
     has_one :category
+    has_many :jobs
+    has_many :events
 
     has_secure_password
 
