@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 
     def create
         @event = Event.create(event_params)
-        # @event.user_id: 
+
         if @event.valid?
             render json: @event
         else

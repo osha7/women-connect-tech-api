@@ -17,7 +17,7 @@ class JobsController < ApplicationController
     def create
         # byebug
         job = Job.create(job_params)
-        # job.user_id: 
+        
         if job.valid?
             render json: job
         else
