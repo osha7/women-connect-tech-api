@@ -1,24 +1,36 @@
-# README
+Women Connect In Tech
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Installation
+The Rails API back end repository can be found here: https://github.com/osha7/women-connect-tech-frontend
 
-Things you may want to cover:
+Fork and clone both repositories before attempting to launch the application.
 
-* Ruby version
+----- BACKEND API -----
+Starting up Rails Server:
 
-* System dependencies
+First run bundle install to install all the necessary gems. Then run rails db:migrate and rails db:seed to build and initialize the PostgresSQL database.
 
-* Configuration
+After the DB has been initialized and seeded run rails s to start the server.
 
-* Database creation
+Starting up React/Redux application:
 
-* Database initialization
+Make sure you have started the rails server by following the steps above.
 
-* How to run the test suite
+----- FRONTEND -----
+Run npm install to install all necessary dependencies. 
+Other dependencies needed:  
 
-* Services (job queues, cache servers, search engines, etc.)
+Run 'npm start -p 3002' to start the application. The application MUST be started in browser at http://localhost:30002.  This is due to CORS dependencies in the backend
 
-* Deployment instructions
+Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/osha7/women-connect-tech-api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-* ...
+License
+This project is available as open source under the terms of the MIT License.
+
+Code of Conduct
+Everyone interacting in the women-connect-tech project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.
+
+This project was bootstrapped with Create React App.
+
+Thank you!
