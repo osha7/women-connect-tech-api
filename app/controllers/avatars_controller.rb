@@ -10,8 +10,8 @@ class AvatarsController < ApplicationController
     def image_upload
         # byebug
         user = User.find(params[:user_id])
-        file_url = Cloudinary::Uploader.upload(params[:image], :public_id => user.id)
-        user.avatar.image = file_url["url"]
+        file_url = Cloudinary::Uploader.upload(params[:image])
+        user.avatar.image = file_url["path_id"]
         user.save
         render json: user
     end
