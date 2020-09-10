@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: "static#home"
 
   resources :avatars, only: [:create, :show, :index]
+  put "/image_upload" => "avatars#image_upload"
   resources :jobs
   resources :events
 

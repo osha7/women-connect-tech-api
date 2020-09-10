@@ -7,6 +7,15 @@ class AvatarsController < ApplicationController
         } 
     end
 
+    def image_upload
+        # byebug
+        user = User.find(params[:user_id])
+        file_url = Cloudinary::Uploader.upload(params[:image], :public_id => user.id)
+        user.avatar.image = file_url["url"]
+        user.save
+        render json: user
+    end
+
     # def create
     #     # byebug
     #     image = Cloudinary::Uploader.upload(params[:image])
@@ -24,7 +33,7 @@ class AvatarsController < ApplicationController
 
     end
 
-        def create
+    def create
         avatar = Avatar.create(avatar_params)
         if avatar.valid?
             render json: avatar
@@ -46,7 +55,7 @@ class AvatarsController < ApplicationController
     private
 
     def avatar_params
-        params.require(:avatar).permit(:id, :link, :user_id)
+        params.require(:avatar).permit(:id, :link, :user_id, :image)
     end
 
 end
